@@ -17,7 +17,7 @@ public class ApiConstants {
     }
 
     // ─── MOCKOON LOCAL SERVER ──────────────────────────────────
-//    public static final String BASE_URL    = "http://10.0.2.2:1308";
+//    public static final String BASE_URL    = "http://10.21.29.253:3000";
 //    public static final String SIGNUP      = BASE_URL + "/signup";
 //    public static final String LOGIN       = BASE_URL + "/login";
 //    public static final String USERS       = BASE_URL + "/users";
