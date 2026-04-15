@@ -1,0 +1,15 @@
+stages:
+    - mavenbuild
+
+mavenBuild:
+    stage: mavenbuild
+    script: 
+        - cd Backend/Roundtrip 1/springboot_example
+        - mvn package
+    tags:
+        - backend
+    only:
+        refs:
+            - bcb43_cicd
+        changes:
+            - Backend/**/+
