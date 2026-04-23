@@ -39,7 +39,8 @@ auto-deploy:
   tags:
     - springboot_tag
   script:
-    - sudo mv "Backend/Roundtrip 1/springboot_example/target/"*.jar /target/web-demo.jar
+    - cd "Backend/Roundtrip 1/springboot_example/target"
+    - sudo mv *.jar /target/web-demo.jar
     - sudo systemctl stop system-web-demo
     - sudo systemctl start system-web-demo
   only:
