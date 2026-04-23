@@ -1,15 +1,30 @@
 stages:
-    - mavenbuild
+  - mavenbuild
+  - maventest
+  
+maven-build:            
+  stage: mavenbuild
+  tags:
+    - yourname_tag      # <-- change to your runner's tag
+  script:
+    - cd Backend/Roundtrip 1/springboot_example        # change 'Backend' to to where you have the pom.xml (do not add / in the beginning)
+    - mvn package
+  only:
+    refs:
+      - bcb43_cicd
+    changes:
+      - Backend/**/*
 
-mavenBuild:
-    stage: mavenbuild
-    script: 
-        - cd Backend/Roundtrip 1/springboot_example
-        - mvn package
-    tags:
-        - backend
-    only:
-        refs:
-            - bcb43_cicd
-        changes:
-            - Backend/**/+
+
+maven-test:             
+  stage: maventest
+  tags:
+    - springboot_tag     # <-- change to your runner's tag
+  script:
+    - cd Backend/Roundtrip 1/springboot_example       # change 'Backend' to to where you have the pom.xml (do not add / in the beginning)
+    - mvn test
+  only:
+    refs:
+      - bcb43_cicd
+    changes:
+      - Backend/**/*
