@@ -5,7 +5,7 @@ stages:
 maven-build:            
   stage: mavenbuild
   tags:
-    - yourname_tag      # <-- change to your runner's tag
+    - springboot_tag      # <-- change to your runner's tag
   script:
     - cd Backend/Roundtrip 1/springboot_example        # change 'Backend' to to where you have the pom.xml (do not add / in the beginning)
     - mvn package
