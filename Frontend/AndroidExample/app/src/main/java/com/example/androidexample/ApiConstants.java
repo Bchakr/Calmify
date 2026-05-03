@@ -56,6 +56,11 @@ public class ApiConstants {
         return APPOINTMENTS + "/counsellor/" + counsellorId + "/accepted";
     }
 
+    // ─── PRESCRIPTIONS ────────────────────────────────────────
+    public static String userPrescriptions(long userId) {
+        return BASE_URL + "/prescriptions/users/" + userId;
+    }
+
     // ─── MOCKOON LOCAL SERVER ──────────────────────────────────
 //    public static final String BASE_URL     = "http://10.0.2.2:1308";
 //    public static final String WS_BASE_URL  = "ws://10.21.29.253:3000";
