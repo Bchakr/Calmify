@@ -4,8 +4,8 @@ public class ApiConstants {
     private ApiConstants() {}
 
     // ─── REAL SERVER ───────────────────────────────────────────
-    public static final String BASE_URL     = "http://coms-3090-004.class.las.iastate.edu:8080";
-    public static final String WS_BASE_URL  = "ws://coms-3090-004.class.las.iastate.edu:8080";
+    public static final String BASE_URL     = "http://10.90.75.205:8080";
+    public static final String WS_BASE_URL  = "ws://10.90.75.205:8080";
 
     public static final String SIGNUP       = BASE_URL + "/users/signup";
     public static final String LOGIN        = BASE_URL + "/users/login";
@@ -54,6 +54,12 @@ public class ApiConstants {
     }
     public static String acceptedByCounsellor(long counsellorId) {
         return APPOINTMENTS + "/counsellor/" + counsellorId + "/accepted";
+    }
+
+    // ─── PRESCRIPTIONS ────────────────────────────────────────
+
+    public static String userPrescriptions(long userId) {
+        return BASE_URL + "/prescriptions/users/" + userId;
     }
 
     // ─── MOCKOON LOCAL SERVER ──────────────────────────────────

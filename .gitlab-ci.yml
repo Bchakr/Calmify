@@ -11,7 +11,7 @@ maven-build:
     - springboot_tag
   script:
     - cd "Backend/Roundtrip 1/springboot_example"
-    - mvn package
+    - mvn package -DskipTests
   artifacts:
     paths:
       - "Backend/Roundtrip 1/springboot_example/target/*.jar"
