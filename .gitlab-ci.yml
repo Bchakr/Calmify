@@ -1,0 +1,84 @@
+stages:
+  - mavenbuild
+  - maventest
+  - mavendeploy
+  - androidbuild
+  - androidtest
+
+maven-build:
+  stage: mavenbuild
+  tags:
+    - springboot_tag
+  script:
+    - cd "Backend/Roundtrip 1/springboot_example"
+    - mvn package
+  artifacts:
+    paths:
+      - "Backend/Roundtrip 1/springboot_example/target/*.jar"
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/**/*
+
+maven-test:
+  stage: maventest
+  tags:
+    - springboot_tag
+  script:
+    - cd "Backend/Roundtrip 1/springboot_example"
+    - mvn test
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/**/*
+
+auto-deploy:
+  stage: mavendeploy
+  tags:
+    - springboot_tag
+  script:
+    - cd "Backend/Roundtrip 1/springboot_example/target"
+    - sudo mv *.jar /target/web-demo.jar
+    - sudo systemctl stop system-web-demo
+    - sudo systemctl start system-web-demo
+  only:
+    refs:
+      - main
+    changes:
+      - Backend/**/*
+
+android-build:
+  image: afirefly/android-ci:java17
+  stage: androidbuild
+  tags:
+    - android_tag
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./Frontend/gradlew
+  script:
+    - cd Frontend
+    - ./gradlew build
+  only:
+    refs:
+      - main
+    changes:
+      - Frontend/**/*
+
+android-test:
+  image: afirefly/android-ci:java17
+  stage: androidtest
+  tags:
+    - android_tag
+  before_script:
+    - export GRADLE_USER_HOME=`pwd`/.gradle
+    - chmod +x ./Frontend/gradlew
+  script:
+    - cd Frontend
+    - ./gradlew test
+  only:
+    refs:
+      - main
+    changes:
+      - Frontend/**/*
