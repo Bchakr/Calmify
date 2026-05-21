@@ -50,11 +50,11 @@ Other highlights:
 ## Architecture
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║                    FRONTEND  (Android App)                       ║
-║                                                                  ║
+╔═════════════════════════════════════════════════════════════════╗
+║                    FRONTEND  (Android App)                      ║
+║                                                                 ║
 ║  ┌─────────────────────┐  ┌──────────────────┐                  ║
-║  │       Views         │  │    App Logic      │                  ║
+║  │       Views         │  │    App Logic     │                  ║
 ║  │                     │  │                  │                  ║
 ║  │ Login / Signup      │  │ Handles UI events│                  ║
 ║  │ Home / Landing      │  │ Validates input  │                  ║
@@ -63,7 +63,7 @@ Other highlights:
 ║  │ Admin Dashboard     │  │ Triggers API     │                  ║
 ║  │ Chat (Real-time)    │  │ calls            │                  ║
 ║  │ AI Chat             │  └────────┬─────────┘                  ║
-║  │ Check-In            │           │                             ║
+║  │ Check-In            │           │                            ║
 ║  │ Routine Tracker     │  ┌────────▼──────────────────────────┐ ║
 ║  │ Sleep Tracker       │  │       Server Request Layer        │ ║
 ║  │ Prescriptions       │  │                                   │ ║
@@ -76,18 +76,18 @@ Other highlights:
 ║                                                │                ║
 ║  ┌──────────────────────────────────────┐      │                ║
 ║  │           Local Model                │      │                ║
-║  │  User · Notes · Profile · Settings  │      │                ║
-║  │  CounsellorStatus · AvatarHelper    │      │                ║
+║  │  User · Notes · Profile · Settings   │      │                ║
+║  │  CounsellorStatus · AvatarHelper     │      │                ║
 ║  └──────────────────────────────────────┘      │                ║
 ╚════════════════════════════════════════════════╪════════════════╝
                           REST / WebSocket (HTTP:8080 / WS:8080)
                  ┌──────────────── ◄──►────────────────┐
-                 │           Request / Response          │
-╔════════════════╪══════════════════════════════════════╪══════════╗
-║                ▼    BACKEND  (Spring Boot :8080)                 ║
-║                                                                  ║
+                 │           Request / Response        │
+╔════════════════╪═════════════════════════════════════╪══════════╗
+║                ▼    BACKEND  (Spring Boot :8080)                ║
+║                                                                 ║
 ║  ┌─────────────────────────────────────────────────────────┐    ║
-║  │                      Controllers                         │    ║
+║  │                      Controllers                        │    ║
 ║  │                                                         │    ║
 ║  │  UserController · UserAdminController                   │    ║
 ║  │  CounsellorProfileController · AssignmentController     │    ║
@@ -98,9 +98,9 @@ Other highlights:
 ║  │  SleepController · RoutineController                    │    ║
 ║  │  PrescriptionController                                 │    ║
 ║  └──────────────────────────┬──────────────────────────────┘    ║
-║                             │                                    ║
+║                             │                                   ║
 ║  ┌──────────────────────────▼──────────────────────────────┐    ║
-║  │                       Services                           │    ║
+║  │                       Services                          │    ║
 ║  │                                                         │    ║
 ║  │  UserService · CounsellorProfileService                 │    ║
 ║  │  AppointmentService · TaskService · NoteService         │    ║
@@ -108,9 +108,9 @@ Other highlights:
 ║  │  NotificationService · RoutineService                   │    ║
 ║  │  PrescriptionService · SleepService                     │    ║
 ║  └──────────────────────────┬──────────────────────────────┘    ║
-║                             │                                    ║
+║                             │                                   ║
 ║  ┌──────────────────────────▼──────────────────────────────┐    ║
-║  │                      Models (Entities)                   │    ║
+║  │                      Models (Entities)                  │    ║
 ║  │                                                         │    ║
 ║  │  User (roles: USER · COUNSELLOR · ADMIN)                │    ║
 ║  │  CounsellorProfile · UserCounsellorAssignment           │    ║
@@ -119,9 +119,9 @@ Other highlights:
 ║  │  Prescription · MedicationCheckIn · AiChatMessage       │    ║
 ║  │  DailyCheckIn                                           │    ║
 ║  └──────────────────────────┬──────────────────────────────┘    ║
-║                             │                                    ║
+║                             │                                   ║
 ║  ┌──────────────────────────▼──────────────────────────────┐    ║
-║  │                     Repositories                         │    ║
+║  │                     Repositories                        │    ║
 ║  │         (Spring Data JPA — all extend JpaRepository)    │    ║
 ║  │                                                         │    ║
 ║  │  UserRepository · CounsellorProfileRepository           │    ║
@@ -133,10 +133,10 @@ Other highlights:
 ║  │  AiChatMessageRepository · DailyCheckInRepository       │    ║
 ║  └──────────────────────────┬──────────────────────────────┘    ║
 ║                             │  JPA / Hibernate (MySQL dialect)  ║
-╚═════════════════════════════╪════════════════════════════════════╝
+╚═════════════════════════════╪═══════════════════════════════════╝
                               │
               ┌───────────────▼────────────────┐
-              │    MySQL Database (:3306)       │
+              │    MySQL Database (:3306)      │
               │                                │
               │  users · counsellor_profiles   │
               │  assignments · appointments    │
@@ -148,8 +148,8 @@ Other highlights:
               └───────────────┬────────────────┘
                               │
               ┌───────────────▼────────────────┐
-              │    External: Gemini AI API      │
-              │  (called by AiChatService)      │
+              │    External: Gemini AI API     │
+              │  (called by AiChatService)     │
               └────────────────────────────────┘
 
 Legend:  ──►  Request   ◄──  Response   ══  System boundary
